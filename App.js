@@ -31,6 +31,8 @@ export async function request_READ_PHONE_STATE() {
     );
     if (granted === PermissionsAndroid.RESULTS.GRANTED) {
       Alert.alert("Permission Granted.");
+      var serialNumber = DeviceInfo.getSerialNumber();
+      alert(serialNumber);
     } else {
       Alert.alert("Permission Not Granted");
     }

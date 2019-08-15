@@ -10,7 +10,7 @@
   "dependencies": {
     "react": "16.8.6",
     "react-native": "0.60.5",
-    "react-native-device-info": "^2.3.2",
+    "react-native-device-info": "git+https://github.com/Thilagavathi1/react-native-device-info.git",
     "react-native-imei": "git+https://github.com/Thilagavathi1/react-native-imei.git"
   },
   "devDependencies": {
