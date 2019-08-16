@@ -31,8 +31,6 @@ export async function request_READ_PHONE_STATE() {
     );
     if (granted === PermissionsAndroid.RESULTS.GRANTED) {
       Alert.alert("Permission Granted.");
-      var serialNumber = DeviceInfo.getSerialNumber();
-      alert(serialNumber);
     } else {
       Alert.alert("Permission Not Granted");
     }
@@ -46,7 +44,7 @@ export default class App extends Component {
     super();
 
     this.state = {
-      device_IMEI: ""
+      serialNumber: ""
     };
   }
   async componentDidMount() {
@@ -54,10 +52,9 @@ export default class App extends Component {
   }
 
   get_Serial_Number = () => {
-    var serialNumber = DeviceInfo.getSerialNumber();
-    console.log(serialNumber, "serialNumber");
-    // alert(serialNumber);
-    this.setState({ device_IMEI: serialNumber });
+    var serialNumber = DeviceInfo.getDeviceSerialNumber().then(res => {
+      this.setState({ serialNumber: res });
+    });
   };
   render() {
     return (
@@ -65,7 +62,7 @@ export default class App extends Component {
         <StatusBar barStyle="light-content" />
         <SafeAreaView>
           <Text style={{ textAlign: "center", marginBottom: 20, fontSize: 20 }}>
-            {this.state.device_IMEI}
+            {this.state.serialNumber}
           </Text>
 
           <Button
